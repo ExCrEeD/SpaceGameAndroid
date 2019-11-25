@@ -6,8 +6,8 @@ import android.graphics.BitmapFactory;
 
 public class EnemySpaceShip {
 
-    public static final float INIT_X =100;
-    public static final float INIT_Y =100;
+    public static final float INIT_X =2000;
+    public static final float INIT_Y =850;
     public static final int SPRITE_SIZE_WIDTH =200;
     public static final int SPRITE_SIZE_HEIGTH=150;
     public static final float GRAVITY_FORCE=10;
@@ -25,6 +25,15 @@ public class EnemySpaceShip {
     private Bitmap spriteEnemySpaceShip;
     private boolean isJumping;
 
+    private int timeBetweenBullet = 0;
+
+    public int getTimeBetweenBullet() {
+        return timeBetweenBullet;
+    }
+
+    public void setTimeBetweenBullet(int timeBetweenBullet) {
+        this.timeBetweenBullet = timeBetweenBullet;
+    }
 
     public EnemySpaceShip(Context context, float screenWidth, float screenHeigth){
 
@@ -121,27 +130,29 @@ public class EnemySpaceShip {
 
 
     public void updateInfo () {
+        positionX -=10;
 
-        if (isJumping) {
-            speed += 5;
-        } else {
-            speed -= 5;
-        }
 
-        if (speed > MAX_SPEED) {
-            speed = MAX_SPEED;
-        }
-        if (speed < MIN_SPEED) {
-            speed = MIN_SPEED;
-        }
-        this.positionY -= speed - GRAVITY_FORCE;
-
-        if (positionY < 0) {
-            positionY = 0;
-        }
-        if (positionY > maxY) {
-            positionY = maxY;
-        }
+//        if (isJumping) {
+//            speed += 5;
+//        } else {
+//            speed -= 5;
+//        }
+//
+//        if (speed > MAX_SPEED) {
+//            speed = MAX_SPEED;
+//        }
+//        if (speed < MIN_SPEED) {
+//            speed = MIN_SPEED;
+//        }
+//        this.positionY -= speed - GRAVITY_FORCE;
+//
+//        if (positionY < 0) {
+//            positionY = 0;
+//        }
+//        if (positionY > maxY) {
+//            positionY = maxY;
+//        }
     }
 
 }

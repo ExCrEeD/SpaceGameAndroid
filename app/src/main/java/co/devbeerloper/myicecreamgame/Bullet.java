@@ -4,11 +4,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-public class Asteroid {
+public class Bullet {
+
     public static final float INIT_X =2000;
     public static final float INIT_Y =850;
-    public static final int SPRITE_SIZE_WIDTH =150;
-    public static final int SPRITE_SIZE_HEIGTH=150;
+    public static final int SPRITE_SIZE_WIDTH =120;
+    public static final int SPRITE_SIZE_HEIGTH=80;
     public static final float GRAVITY_FORCE=10;
     private final int MIN_SPEED = 1;
     private final int MAX_SPEED = 20;
@@ -19,35 +20,35 @@ public class Asteroid {
     private float speed = 0;
     private float positionX;
     private float positionY;
-    private Bitmap spriteAsteroid;
+    private Bitmap spriteBullet;
     private boolean isJumping;
 
 
-    public Asteroid(Context context, float screenWidth, float screenHeigth){
+    public Bullet(Context context, float screenWidth, float screenHeigth){
 
         speed = 1;
         positionX = this.INIT_X;
         positionY = this.INIT_Y;
         isJumping = false;
         //Getting bitmap from resource
-        Bitmap originalBitmap= BitmapFactory.decodeResource(context.getResources(), R.drawable.asteroid);
-        spriteAsteroid  = Bitmap.createScaledBitmap(originalBitmap, SPRITE_SIZE_WIDTH, SPRITE_SIZE_HEIGTH, false);
+        Bitmap originalBitmap= BitmapFactory.decodeResource(context.getResources(), R.drawable.bullet);
+        spriteBullet  = Bitmap.createScaledBitmap(originalBitmap, SPRITE_SIZE_WIDTH, SPRITE_SIZE_HEIGTH, false);
 
-        this.maxX = screenWidth - (spriteAsteroid.getWidth()/2);
-        this.maxY = screenHeigth - spriteAsteroid.getHeight();
+        this.maxX = screenWidth - (spriteBullet.getWidth()/2);
+        this.maxY = screenHeigth - spriteBullet.getHeight();
     }
 
-    public Asteroid(Context context, float initialX, float initialY, float screenWidth, float screenHeigth){
+    public Bullet(Context context, float initialX, float initialY, float screenWidth, float screenHeigth){
 
         speed = 1;
         positionX = initialX;
         positionY = initialY;
 
-        Bitmap originalBitmap= BitmapFactory.decodeResource(context.getResources(), R.drawable.asteroid);
-        spriteAsteroid  = Bitmap.createScaledBitmap(originalBitmap, SPRITE_SIZE_WIDTH, SPRITE_SIZE_HEIGTH, false);
+        Bitmap originalBitmap= BitmapFactory.decodeResource(context.getResources(), R.drawable.bullet);
+        spriteBullet  = Bitmap.createScaledBitmap(originalBitmap, SPRITE_SIZE_WIDTH, SPRITE_SIZE_HEIGTH, false);
 
-        this.maxX = screenWidth - (spriteAsteroid.getWidth()/2);
-        this.maxY = screenHeigth - spriteAsteroid.getHeight();
+        this.maxX = screenWidth - (spriteBullet.getWidth()/2);
+        this.maxY = screenHeigth - spriteBullet.getHeight();
 
     }
 
@@ -83,12 +84,12 @@ public class Asteroid {
         this.positionY = positionY;
     }
 
-    public Bitmap getSpriteAsteroid() {
-        return spriteAsteroid;
+    public Bitmap getSpriteBullet() {
+        return spriteBullet;
     }
 
-    public void setSpriteAsteroid(Bitmap spriteAsteroid) {
-        this.spriteAsteroid = spriteAsteroid;
+    public void setSpriteBullet(Bitmap spriteBullet) {
+        this.spriteBullet = spriteBullet;
     }
 
     public static int getSpriteSizeWidth() {
@@ -124,7 +125,8 @@ public class Asteroid {
         if (positionY > maxY) {
             positionY = maxY;
         }*/
-       positionX -=6;
+        positionX +=17;
 
     }
+
 }
